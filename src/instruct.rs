@@ -126,7 +126,6 @@ pub fn perform(inst: Umi, mut machine: &mut Machine){
         }
         o if o == Opcode::In as u32 => {
 
-            //let mut line = String::new();
             let mut buffer = [0_u8];
             let res = stdin().read(&mut buffer).unwrap();
 
@@ -136,8 +135,6 @@ pub fn perform(inst: Umi, mut machine: &mut Machine){
             else if res == 0 {
                 machine.deref_mut().registers[get(&RC, inst) as usize] = u32::MAX
             }
-            //match to 1 or 0
-            //machine.deref_mut().registers[get(&RC, inst) as usize] = std::io::stdin().read_exact(buffer).unwrap() as u32;
 
             machine.deref_mut().program_counter += 1;
         }
